@@ -16,7 +16,7 @@ abstract class DAOFactory
     /**
      * @return UniversityDAOInterface
      */
-    public static function getCustomerDAO()
+    public static function getUniversityDAO()
     {
         return new UniversityDAOImpl(Database::connect());
     }
