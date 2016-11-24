@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: andreas.martin
+ * Date: 14.11.2016
+ * Time: 11:34
+ */
+include("../model/PricePackage.php");
+
+interface PricePackageDAOInterface
+{
+
+    public function createPricePackage(PricePackage $pricePackage);
+
+    public function readPricePackage($id);
+
+    public function updatePricePackage(PricePackage $pricePackage);
+
+    public function deletePricePackage(PricePackage $pricePackage);
+
+    public function findAll();
+}

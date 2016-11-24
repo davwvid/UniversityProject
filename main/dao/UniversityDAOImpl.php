@@ -12,7 +12,7 @@ include "UniversityDAOInterface.php";
 class UniversityDAOImpl extends AbstractDAO implements UniversityDAOInterface
 {
     /**
-     * @param University $customer
+     * @param University $university
      * @return University
      */
     public function createUniversity(University $university)
@@ -42,7 +42,7 @@ class UniversityDAOImpl extends AbstractDAO implements UniversityDAOInterface
     {
         if (is_null($university->getId())) {
             throw new LogicException(
-                'Cannot update customer that does not yet exist in the database.'
+                'Cannot update university that does not yet exist in the database.'
             );
         }
         $stmt = $this->pdoInstance->prepare('
