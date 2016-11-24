@@ -7,7 +7,7 @@ class CourseController
     public function show()
     {
 
-        //$courses = DAOFactory::g()->findAll();
+        $courses = DAOFactory::getCourseDAO()->findAll();
         require_once('../view/showCourse.php');
     }
 }
