@@ -1,6 +1,6 @@
 <?php
 
-include "AbstractDAO.php";
+require_once "AbstractDAO.php";
 include "AdministratorDAOInterface.php";
 
 /**
