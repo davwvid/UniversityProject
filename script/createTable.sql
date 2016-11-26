@@ -14,7 +14,7 @@ CREATE TABLE `university` (
   `description` VARCHAR(200) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
-  `fkUniversity` INT NOT NULL
+  `fkPricePackage` INT NOT NULL
 )ENGINE = INNODB;
 
 CREATE TABLE `invoice` (

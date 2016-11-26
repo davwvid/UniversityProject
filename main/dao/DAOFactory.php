@@ -27,7 +27,7 @@ abstract class DAOFactory
     }
 
     /**
-     * @return UniversityDAOInterface
+     * @return CourseDAOInterface
      */
     public static function getCourseDAO()
     {
@@ -35,7 +35,7 @@ abstract class DAOFactory
     }
 
     /**
-     * @return UniversityDAOInterface
+     * @return AdministratorDAOInterface
      */
     public static function getAdministratorDAO()
     {

@@ -14,7 +14,14 @@ class CourseController
     public function read()
     {
 
-        $course = DAOFactory::getCourseDAO()->readCourse();
+        if (!empty($_GET['id'])) {
+            $id = $_REQUEST['id'];
+        } else {
+            $id = $_GET['id'];
+        }
+
+        $course = DAOFactory::getCourseDAO()->readCourse($id);
+        $university = DAOFactory::getUniversityDAO()->readUniversity($course->getFkUniversity());
         require_once('../view/readCourse.php');
     }
 }

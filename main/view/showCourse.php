@@ -17,7 +17,7 @@
             <?php
             foreach ($courses as $course) {
                 echo '<tr>';
-                echo '<td>' . $course->getName() . '</td>';
+                echo '<td><a href="?controller=Course&action=read&id=' . $course->getId() . '">' . $course->getName() . '</a></td>';
                 echo '<td>' . $course->getShortDescription() . '</td>';
                 echo '<td>' . $course->getExpirationDate() . '</td>';
                 echo '<td>' . $course->getFkUniversity() . '</td>';
