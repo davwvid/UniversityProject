@@ -106,4 +106,15 @@ class CourseDAOImpl extends AbstractDAO implements CourseDAOInterface
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Course');
     }
+
+    /**
+     * @return Course[]
+     */
+    public function findAllByUniversity($id)
+    {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT course.* FROM course WHERE course.fkUniversity=' . $id);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Course');
+    }
 }

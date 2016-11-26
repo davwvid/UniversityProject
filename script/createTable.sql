@@ -39,7 +39,7 @@ CREATE TABLE `advertising` (
   `fkUniversity` INT NOT NULL
 )ENGINE = INNODB;
 
-CREATE TABLE `advertising` (
+CREATE TABLE `administrator` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL
