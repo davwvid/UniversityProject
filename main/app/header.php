@@ -28,6 +28,11 @@
                     <button type="submit" class="btn btn-default">Edit University</button>
                 </div>
             </form>
+            <form class="navbar-form navbar-right" action="?controller=Course&action=show" method="post">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Edit University</button>
+                </div>
+            </form>
         <?php } else { ?>
             <form class="navbar-form navbar-right" action="?controller=Login&action=create" method="post">
                 <div class="form-group">
