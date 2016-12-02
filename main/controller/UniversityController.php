@@ -24,4 +24,10 @@ class UniversityController
         $courses = DAOFactory::getCourseDAO()->findAllByUniversity($university->getId());
         require_once('../view/readUniversity.php');
     }
+
+    public function update()
+    {
+        $university = DAOFactory::getUniversityDAO()->readUniversity($_SESSION['id']);
+        require_once('../view/updateUniversity.php');
+    }
 }

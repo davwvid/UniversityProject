@@ -17,11 +17,16 @@
             </li>
         </ul>
         <?php if (isset($_SESSION['loggedIn'])) { ?>
-            <form class="navbar-form navbar-right">
+            <form class="navbar-form navbar-right" action="?controller=Login&action=logOut" method="post">
                 <div class="form-group">
                     <span type="text">FHNW Basel</span>
                 </div>
                 <button type="submit" class="btn btn-default">Logout</button>
+            </form>
+            <form class="navbar-form navbar-right" action="?controller=University&action=update" method="post">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Edit University</button>
+                </div>
             </form>
         <?php } else { ?>
             <form class="navbar-form navbar-right" action="?controller=Login&action=create" method="post">
