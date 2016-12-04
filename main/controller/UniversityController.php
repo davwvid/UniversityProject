@@ -1,6 +1,7 @@
 <?php
 
 include '../dao/DAOFactory.php';
+include '../validator/UniversityValidator.php';
 
 class UniversityController
 {
@@ -30,10 +31,7 @@ class UniversityController
         $university = new University();
         $universityValidator = new UniversityValidator();
 
-        $id = null;
-        if (!empty($_GET['id'])) {
-            $id = $_REQUEST['id'];
-        }
+        $id = $_SESSION['id'];
 
         if (!empty($_POST)) {
             $university = new University($id, $_POST['link'], $_POST['description'], $_POST['email']);
@@ -41,7 +39,7 @@ class UniversityController
 
             if ($universityValidator->isValid()) {
                 $university = DAOFactory::getUniversityDAO()->updateUniversity($university);
-                return Route::call('University', 'showMine');       //to where should it redirect???
+                return Route::call('Home', 'show');       //to where should it redirect???
             }
         } else {
             $university = DAOFactory::getUniversityDAO()->readUniversity($id);
