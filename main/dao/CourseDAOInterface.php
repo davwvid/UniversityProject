@@ -20,4 +20,6 @@ interface CourseDAOInterface
     public function deleteCourse(Course $course);
 
     public function findAll();
+
+    public function findAllByUniversity($id);
 }

@@ -1,18 +1,22 @@
 <?php
 
+include '../dao/DAOFactory.php';
+
 class LoginController
 {
 
     public function create()
     {
 
-        if (isset($_POST['email'])) {
-            $email = $_POST['email'];
-            echo $email;
-            $_SESSION['loggedIn'] = true;
-            $_SESSION['id'] = 1; //Hardcoded for now....
-        }
+        if (isset($_POST['email']) && isset($_POST['password'])) {
 
+            $university = DAOFactory::getUniversityDAO()->readUniversityByCredentials($_POST['email'], $_POST['password']);
+
+            if ($university != null) {
+                $_SESSION['loggedIn'] = true;
+                $_SESSION['id'] = $university->getId();
+            }
+        }
     }
 
     public function logOut()
