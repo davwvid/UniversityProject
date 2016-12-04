@@ -27,7 +27,25 @@ class UniversityController
 
     public function update()
     {
-        $university = DAOFactory::getUniversityDAO()->readUniversity($_SESSION['id']);
+        $university = new University();
+        $universityValidator = new UniversityValidator();
+
+        $id = null;
+        if (!empty($_GET['id'])) {
+            $id = $_REQUEST['id'];
+        }
+
+        if (!empty($_POST)) {
+            $university = new University($id, $_POST['link'], $_POST['description'], $_POST['email']);
+            $universityValidator = new UniversityValidator($university);
+
+            if ($universityValidator->isValid()) {
+                $university = DAOFactory::getUniversityDAO()->updateUniversity($university);
+                return Route::call('University', 'showMine');       //to where should it redirect???
+            }
+        } else {
+            $university = DAOFactory::getUniversityDAO()->readUniversity($id);
+        }
         require_once('../view/updateUniversity.php');
     }
 }
