@@ -74,11 +74,30 @@ class UniversityDAOImpl extends AbstractDAO implements UniversityDAOInterface
     public function readUniversity($id)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT university.id, university.name, university.link, university.description, university.email, university.password, university.fkPricePackage
+            SELECT university.*
              FROM university 
              WHERE id = :id
         ');
         $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        return $stmt->fetchObject("University");
+    }
+
+    /**
+     * @param $email
+     * @param $password
+     * @return University
+     */
+    public function readUniversityByCredentials($email, $password)
+    {
+        $stmt = $this->pdoInstance->prepare('
+            SELECT university.*
+             FROM university 
+             WHERE email = :email
+             AND password = :password
+        ');
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':password', $password);
         $stmt->execute();
         return $stmt->fetchObject("University");
     }

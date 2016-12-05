@@ -17,17 +17,19 @@
             </li>
         </ul>
         <?php if (isset($_SESSION['loggedIn'])) { ?>
-            <form class="navbar-form navbar-right" action="?controller=Login&action=logOut" method="post">
-                <div class="form-group">
-                    <span type="text">FHNW Basel</span>
-                </div>
-                <button type="submit" class="btn btn-default">Logout</button>
-            </form>
-            <form class="navbar-form navbar-right" action="?controller=University&action=update" method="post">
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default">Edit University</button>
-                </div>
-            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <?php echo '<a class="btn" href="?controller=University&action=update">My University</a>' ?>
+                </li>
+                <li>
+                    <?php echo '<a class="btn" href="?controller=Course&action=showMine">My Courses</a>' ?>
+                </li>
+                <li>
+                    <form class="navbar-form navbar-right" action="?controller=Login&action=logOut" method="post">
+                        <button type="submit" class="btn btn-default">Logout</button>
+                    </form>
+                </li>
+            </ul>
         <?php } else { ?>
             <form class="navbar-form navbar-right" action="?controller=Login&action=create" method="post">
                 <div class="form-group">
