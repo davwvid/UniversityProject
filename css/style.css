@@ -1,0 +1,59 @@
+#header{
+    background-color: #3f51b5;
+    color: white;
+    height: 180px;
+    text-align: left;
+}
+#newsletter{
+    background-color: #3f51b5;
+    color: white;
+    height: 100px;
+    clear: both;
+}
+#container{
+    background-color: white;
+    width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#content{
+    padding-top: 10px;
+    padding-left: 0;
+}
+#nav{
+    width: 250px;
+    float: left;
+}
+#main{
+    width: 460px;
+    float: right;
+}
+#headerImage{
+    width: 280px;
+    float: left;
+    clear: both;
+}
+#headerText{
+    width: 480px;
+    float: right;
+    text-align: left;
+    padding-top: 120px;
+}
+.img{
+    padding: 50px 40px 0 40px;
+    margin-bottom: 0;
+    width: 324px;
+}
+#newsletterText{
+    float: left;
+    clear: both;
+    padding-top: 32px;
+    padding-left: 40px;
+}
+#newsletterButton{
+    float: right;
+    padding-top: 40px;
+    padding-right: 40px;
+    color: black;
+}
+
