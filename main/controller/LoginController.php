@@ -15,6 +15,7 @@ class LoginController
             if ($university != null) {
                 $_SESSION['loggedIn'] = true;
                 $_SESSION['id'] = $university->getId();
+                header("Refresh:0");
             }
         }
     }

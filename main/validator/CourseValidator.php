@@ -13,7 +13,6 @@ class CourseValidator
     private $descriptionError = null;
     private $expirationDateError = null;
 
-
     public function __construct(Course $course = null)
     {
         $this->course = $course;
