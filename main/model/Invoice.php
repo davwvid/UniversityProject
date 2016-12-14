@@ -4,29 +4,33 @@ class Invoice
 {
     protected $id;
     protected $price;
-    protected $type;
     protected $date;
+    protected $comment;
+    protected $payed;
     protected $fkUniversity;
 
     /**
      * Invoice constructor.
      * @param $id
      * @param $price
-     * @param $type
      * @param $date
+     * @param $comment
+     * @param $payed
      * @param $fkUniversity
      */
-    public function __construct($id = null, $price = null, $type = null, $date = null, $fkUniversity = null)
+    public function __construct($id = null, $price = null, $date = null, $comment = null, $payed = null, $fkUniversity = null)
     {
 
         if (isset($id))
             $this->id = $id;
         if (isset($price))
             $this->price = $price;
-        if (isset($type))
-            $this->type = $type;
         if (isset($date))
             $this->date = $date;
+        if (isset($comment))
+            $this->comment = $comment;
+        if (isset($payed))
+            $this->payed = $payed;
         if (isset($fkUniversity))
             $this->fkUniversity = $fkUniversity;
     }
@@ -66,17 +70,17 @@ class Invoice
     /**
      * @return null
      */
-    public function getType()
+    public function getComment()
     {
-        return $this->type;
+        return $this->comment;
     }
 
     /**
-     * @param null $type
+     * @param null $comment
      */
-    public function setType($type)
+    public function setComment($comment)
     {
-        $this->type = $type;
+        $this->comment = $comment;
     }
 
     /**
@@ -93,6 +97,22 @@ class Invoice
     public function setDate($date)
     {
         $this->date = $date;
+    }
+
+    /**
+     * @return null
+     */
+    public function getPayed()
+    {
+        return $this->payed;
+    }
+
+    /**
+     * @param null $payed
+     */
+    public function setPayed($payed)
+    {
+        $this->payed = $payed;
     }
 
     /**

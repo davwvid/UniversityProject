@@ -3,6 +3,7 @@
 include '../dao/DAOFactory.php';
 include '../validator/UniversityValidator.php';
 include '../controller/CommonController.php';
+include '../controller/InvoiceController.php';
 
 class UniversityController
 {
@@ -39,7 +40,8 @@ class UniversityController
             $universityValidator = new UniversityValidator($university);
 
             if ($universityValidator->isValid()) {
-                DAOFactory::getUniversityDAO()->createUniversity($university);
+                $university = DAOFactory::getUniversityDAO()->createUniversity($university);
+                InvoiceController::create("sub", $university);
                 return Route::call('University', 'showAll');
             }
         }

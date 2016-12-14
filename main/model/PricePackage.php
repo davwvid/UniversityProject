@@ -3,23 +3,23 @@
 class PricePackage
 {
     protected $id;
-    protected $name;
-    protected $price;
+    protected $priceSub;
+    protected $priceCourse;
 
     /**
      * PricePackage constructor.
      * @param $id
-     * @param $name
-     * @param $price
+     * @param $priceSub
+     * @param $priceCourse
      */
-    public function __construct($id = null, $name = null, $price = null)
+    public function __construct($id = null, $priceSub = null, $priceCourse = null)
     {
         if (isset($id))
             $this->id = $id;
-        if (isset($name))
-            $this->name = $name;
-        if (isset($price))
-            $this->price = $price;
+        if (isset($priceSub))
+            $this->priceSub = $priceSub;
+        if (isset($priceCourse))
+            $this->priceCourse = $priceCourse;
     }
 
     /**
@@ -41,33 +41,33 @@ class PricePackage
     /**
      * @return null
      */
-    public function getName()
+    public function getPriceSub()
     {
-        return $this->name;
+        return $this->priceSub;
     }
 
     /**
-     * @param null $name
+     * @param null $priceSub
      */
-    public function setName($name)
+    public function setPriceSub($priceSub)
     {
-        $this->name = $name;
+        $this->priceSub = $priceSub;
     }
 
     /**
      * @return null
      */
-    public function getPrice()
+    public function getPriceCourse()
     {
-        return $this->price;
+        return $this->priceCourse;
     }
 
     /**
-     * @param null $price
+     * @param null $priceCourse
      */
-    public function setPrice($price)
+    public function setPriceCourse($priceCourse)
     {
-        $this->price = $price;
+        $this->priceCourse = $priceCourse;
     }
 
 }

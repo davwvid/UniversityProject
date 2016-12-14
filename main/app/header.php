@@ -34,6 +34,9 @@
                             <li>
                                 <a class="btn" href="?controller=Course&action=showMine">My Courses</a>
                             </li>
+                            <li>
+                                <a class="btn" href="?controller=Invoice&action=showMine">My Invoices</a>
+                            </li>
                         <?php } ?>
 
                         <li role="separator" class="divider"></li>

@@ -20,15 +20,15 @@ CREATE TABLE `university` (
 CREATE TABLE `invoice` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `price` DOUBLE NOT NULL,
-  `type` INT NOT NULL,
   `date` DATE NOT NULL,
+  `comment` VARCHAR(200) NOT NULL,
   `fkUniversity` INT NOT NULL
 )ENGINE = INNODB;
 
 CREATE TABLE `pricePackage` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` VARCHAR(100) NOT NULL,
-  `price` DOUBLE NOT NULL
+  `priceSub` DOUBLE NOT NULL,
+  `priceCourse` DOUBLE NOT NULL
 )ENGINE = INNODB;
 
 CREATE TABLE `advertising` (
@@ -38,9 +38,4 @@ CREATE TABLE `advertising` (
   `price` DOUBLE NOT NULL,
   `fkUniversity` INT NOT NULL
 )ENGINE = INNODB;
-
-CREATE TABLE `administrator` (
-  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `email` VARCHAR(100) NOT NULL,
-  `password` VARCHAR(100) NOT NULL
-)ENGINE = INNODB;
+;

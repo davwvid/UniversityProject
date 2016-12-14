@@ -25,8 +25,10 @@
                     echo '<td><a href="?controller=University&action=read&id=' . $university->getId() . '">' . $university->getName() . '</a></td>';
                     echo '<td>' . $university->getLink() . '</td>';
                     echo '<td>' . $university->getEmail() . '</td>';
-                    echo '<td width=250>';
+                    echo '<td width=350>';
                     echo '<a class="btn" href="?controller=University&action=read&id=' . $university->getId() . '">Read</a>';
+                    echo '&nbsp;';
+                    echo '<a class="btn" href="?controller=Invoice&action=read&id=' . $university->getId() . '">Invoices</a>';
                     echo '&nbsp;';
                     echo '<a class="btn btn-success" href="?controller=University&action=update&id=' . $university->getId() . '">Update</a>';
                     echo '&nbsp;';

@@ -21,10 +21,10 @@ class PricePackageDAOImpl extends AbstractDAO implements PricePackageDAOInterfac
             return $this->updatePricePackage($pricePackage);
         }
         $stmt = $this->pdoInstance->prepare('
-            INSERT INTO pricePackage (name, price)
-            VALUES (:name, :price)');
-        $stmt->bindValue(':name', $pricePackage->getName());
-        $stmt->bindValue(':price', $pricePackage->getPrice());
+            INSERT INTO pricePackage (priceSub, priceCourse)
+            VALUES (:priceSub, :priceCourse)');
+        $stmt->bindValue(':priceSub', $pricePackage->getPriceSub());
+        $stmt->bindValue(':priceCourse', $pricePackage->getPriceCourse());
         $stmt->execute();
         $pricePackage = $this->readPricePackage($this->pdoInstance->lastInsertId());
         return $pricePackage;
@@ -43,13 +43,12 @@ class PricePackageDAOImpl extends AbstractDAO implements PricePackageDAOInterfac
         }
         $stmt = $this->pdoInstance->prepare('
             UPDATE pricePackage
-            SET name = :name,
-                price = :price
+            SET priceSub = :priceSub,
+                priceCourse = :priceCourse
             WHERE id = :id
         ');
-        $stmt->bindValue(':name', $pricePackage->getName());
-        $stmt->bindValue(':price', $pricePackage->getPrice());
-        $stmt->bindValue(':id', $pricePackage->getId());
+        $stmt->bindValue(':priceSub', $pricePackage->getPriceSub());
+        $stmt->bindValue(':priceCourse', $pricePackage->getPriceCourse());
         $stmt->execute();
         return $pricePackage;
     }
@@ -62,7 +61,7 @@ class PricePackageDAOImpl extends AbstractDAO implements PricePackageDAOInterfac
     public function readPricePackage($id)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT pricePackage.id, pricePackage.name, pricePackage.price
+            SELECT pricePackage.*
              FROM pricePackage 
              WHERE id = :id
         ');

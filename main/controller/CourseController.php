@@ -2,6 +2,7 @@
 
 include '../dao/DAOFactory.php';
 include '../validator/CourseValidator.php';
+include '../controller/InvoiceController.php';
 
 class CourseController
 {
@@ -35,7 +36,9 @@ class CourseController
             $courseValidator = new CourseValidator($course);
 
             if ($courseValidator->isValid()) {
-                $ourse = DAOFactory::getCourseDAO()->createCourse($course);
+                $course = DAOFactory::getCourseDAO()->createCourse($course);
+                $university = DAOFactory::getUniversityDAO()->readUniversity($course->getFkUniversity());
+                InvoiceController::create("", $university);
                 return Route::call('Course', 'showMine');
             }
         }

@@ -10,7 +10,6 @@
 include 'Database.php';
 include 'UniversityDAOImpl.php';
 include 'CourseDAOImpl.php';
-include 'AdministratorDAOImpl.php';
 include 'AdvertisingDAOImpl.php';
 include 'InvoiceDAOImpl.php';
 include 'PricePackageDAOImpl.php';
@@ -32,14 +31,6 @@ abstract class DAOFactory
     public static function getCourseDAO()
     {
         return new CourseDAOImpl(Database::connect());
-    }
-
-    /**
-     * @return AdministratorDAOInterface
-     */
-    public static function getAdministratorDAO()
-    {
-        return new AdministratorDAOImpl(Database::connect());
     }
 
     /**

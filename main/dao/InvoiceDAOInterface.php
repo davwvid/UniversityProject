@@ -20,4 +20,6 @@ interface InvoiceDAOInterface
     public function deleteInvoice(Invoice $invoice);
 
     public function findAll();
+
+    public function findAllByUniversity($id);
 }

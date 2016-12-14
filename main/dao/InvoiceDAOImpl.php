@@ -21,11 +21,12 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
             return $this->updateInvoice($invoice);
         }
         $stmt = $this->pdoInstance->prepare('
-            INSERT INTO invoice (price, type, date, fkUniversity)
-            VALUES (:price, :type , :date, :fkUniversity)');
+            INSERT INTO invoice (price, date, comment, payed, fkUniversity)
+            VALUES (:price, :date , :comment, :fkUniversity)');
         $stmt->bindValue(':price', $invoice->getPrice());
-        $stmt->bindValue(':type', $invoice->getType());
         $stmt->bindValue(':date', $invoice->getDate());
+        $stmt->bindValue(':comment', $invoice->getComment());
+        $stmt->bindValue(':payed', $invoice->getPayed());
         $stmt->bindValue(':fkUniversity', $invoice->getFkUniversity());
         $stmt->execute();
         $invoice = $this->readInvoice($this->pdoInstance->lastInsertId());
@@ -46,14 +47,16 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
         $stmt = $this->pdoInstance->prepare('
             UPDATE invoice
             SET price = :price,
-                type = :type,
                 date = :date,
+                comment = :comment,
+                payed = :payed,
                 fkUniversity = :fkUniversity
             WHERE id = :id
         ');
         $stmt->bindValue(':price', $invoice->getPrice());
-        $stmt->bindValue(':type', $invoice->getType());
         $stmt->bindValue(':date', $invoice->getDate());
+        $stmt->bindValue(':comment', $invoice->getComment());
+        $stmt->bindValue(':payed', $invoice->getPayed());
         $stmt->bindValue(':fkUniversity', $invoice->getFkUniversity());
         $stmt->bindValue(':id', $invoice->getId());
         $stmt->execute();
@@ -68,7 +71,7 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
     public function readInvoice($id)
     {
         $stmt = $this->pdoInstance->prepare('
-            SELECT invoice.id, invoice.price, invoice.type, invoice.date, invoice.fkUniversity
+            SELECT invoice.*
              FROM invoice 
              WHERE id = :id
         ');
@@ -100,6 +103,18 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
         $stmt = $this->pdoInstance->prepare('
             SELECT invoice.* FROM invoice
         ');
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Invoice');
+    }
+
+    public function findAllByUniversity($fkUniversity)
+    {
+
+        $stmt = $this->pdoInstance->prepare('
+            SELECT invoice.* FROM invoice 
+            WHERE fkUniversity = :fkUniversity
+        ');
+        $stmt->bindValue(':fkUniversity', $fkUniversity);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Invoice');
     }
