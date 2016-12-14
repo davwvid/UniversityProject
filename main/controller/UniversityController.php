@@ -39,7 +39,7 @@ class UniversityController
 
             if ($universityValidator->isValid()) {
                 $university = DAOFactory::getUniversityDAO()->updateUniversity($university);
-                return Route::call('Home', 'show');       //to where should it redirect???
+                return Route::call('Home', 'show');
             }
         } else {
             $university = DAOFactory::getUniversityDAO()->readUniversity($id);

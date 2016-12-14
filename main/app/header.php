@@ -7,39 +7,48 @@
         </div>
         <ul class="nav navbar-nav">
             <li>
-                <?php echo '<a class="btn" href="?controller=Home&action=show">Home</a>' ?>
+                <a class="btn" href="?controller=Home&action=show">Home</a>
             </li>
             <li>
-                <?php echo '<a class="btn" href="?controller=University&action=show">Universities</a>' ?>
+                <a class="btn" href="?controller=University&action=show">Universities</a>
             </li>
             <li>
-                <?php echo '<a class="btn" href="?controller=Course&action=show">Courses</a>' ?>
+                <a class="btn" href="?controller=Course&action=show">Courses</a>
             </li>
         </ul>
         <?php if (isset($_SESSION['loggedIn'])) { ?>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <?php echo '<a class="btn" href="?controller=University&action=update">My University</a>' ?>
-                </li>
-                <li>
-                    <?php echo '<a class="btn" href="?controller=Course&action=showMine">My Courses</a>' ?>
-                </li>
-                <li>
-                    <form class="navbar-form navbar-right" action="?controller=Login&action=logOut" method="post">
-                        <button type="submit" class="btn btn-default">Logout</button>
-                    </form>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Manage <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <?php if (isset($_SESSION['admin'])) { ?>
+                            <li>
+                                <a class="btn" href="?controller=University&action=showUniversities">Universities</a>
+                            </li>
+                        <?php } else { ?>
+                            <li>
+                                <a class="btn" href="?controller=University&action=update">My University</a>
+                            </li>
+                            <li>
+                                <a class="btn" href="?controller=Course&action=showMine">My Courses</a>
+                            </li>
+                        <?php } ?>
+
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <a class="btn" href="?controller=Login&action=logout">Logout</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         <?php } else { ?>
-            <form class="navbar-form navbar-right" action="?controller=Login&action=create" method="post">
-                <div class="form-group">
-                    <input type="text" name="email" class="form-control" placeholder="email" value=""/>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" class="form-control" placeholder="password" value=""/>
-                </div>
-                <button type="submit" name="submit">Login</button>
-            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="btn" href="?controller=Login&action=showLogin">Login</a>
+                </li>
+            </ul>
         <?php } ?>
     </div>
 </nav>

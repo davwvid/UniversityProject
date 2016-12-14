@@ -17,6 +17,8 @@ interface UniversityDAOInterface
 
     public function readUniversityByCredentials($email, $password);
 
+    public function readUniversityByEmail($email);
+
     public function updateUniversity(University $university);
 
     public function deleteUniversity(University $university);
