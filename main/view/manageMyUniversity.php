@@ -2,15 +2,15 @@
 
     <div class="span10 offset1">
         <div class="row">
-            <h3>Update a Course</h3>
+            <h3>Update my university</h3>
         </div>
 
-        <form class="form-horizontal" action="?controller=Course&action=update&id=<?php echo $course->getId() ?>"
+        <form class="form-horizontal"
+              action="?controller=University&action=updateMine&id=<?php echo $university->getId() ?>"
               method="post">
-            <?php include_once("formCourse.php"); ?>
+            <?php include_once("formMyUniversity.php"); ?>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success">Update</button>
-                <a class="btn" href="?controller=Course&action=showMine">Back</a>
             </div>
         </form>
     </div>

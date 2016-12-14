@@ -16,12 +16,14 @@
             <tbody>
             <?php
             foreach ($universities as $university) {
-                echo '<tr>';
-                echo '<td><a href="?controller=University&action=read&id=' . $university->getId() . '">' . $university->getName() . '</a></td>';
-                echo '<td><a href="http://' . $university->getLink() . '">' . $university->getLink() . '</a></td>';
-                echo '<td>' . $university->getDescription() . '</td>';
-                echo '<td><a href="mailto:' . $university->getEmail() . '">' . $university->getEmail() . '</a></td>';
-                echo '</tr>';
+                if ($university->getName() != "admin") {
+                    echo '<tr>';
+                    echo '<td><a href="?controller=University&action=read&id=' . $university->getId() . '">' . $university->getName() . '</a></td>';
+                    echo '<td><a href="http://' . $university->getLink() . '">' . $university->getLink() . '</a></td>';
+                    echo '<td>' . $university->getDescription() . '</td>';
+                    echo '<td><a href="mailto:' . $university->getEmail() . '">' . $university->getEmail() . '</a></td>';
+                    echo '</tr>';
+                }
             }
             ?>
             </tbody>

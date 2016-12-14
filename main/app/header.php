@@ -25,11 +25,11 @@
 
                         <?php if (isset($_SESSION['admin'])) { ?>
                             <li>
-                                <a class="btn" href="?controller=University&action=showUniversities">Universities</a>
+                                <a class="btn" href="?controller=University&action=showAll">Universities</a>
                             </li>
                         <?php } else { ?>
                             <li>
-                                <a class="btn" href="?controller=University&action=update">My University</a>
+                                <a class="btn" href="?controller=University&action=updateMine">My University</a>
                             </li>
                             <li>
                                 <a class="btn" href="?controller=Course&action=showMine">My Courses</a>

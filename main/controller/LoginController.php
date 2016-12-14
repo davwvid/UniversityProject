@@ -1,6 +1,7 @@
 <?php
 
 include '../dao/DAOFactory.php';
+include '../controller/CommonController.php';
 
 class LoginController
 {
@@ -55,6 +56,7 @@ class LoginController
         if ($_SESSION['loggedIn'] == true) {
             $_SESSION['loggedIn'] = null;
             $_SESSION['id'] = null;
+            $_SESSION['admin'] = null;
             header("Refresh:0");
         }
 
@@ -69,7 +71,7 @@ class LoginController
 
             if (!empty($university)) {
 
-                $newPassword = $this->generateRandomString();
+                $newPassword = CommonController::generateRandomString();
 
                 $hashed_password = password_hash($newPassword, PASSWORD_DEFAULT);
                 $university->setPassword($hashed_password);
@@ -88,17 +90,6 @@ class LoginController
         }
 
         require_once('../view/reset.php');
-    }
-
-    public function generateRandomString($length = 10)
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
     }
 
     public function sendMail($name, $password, $email)

@@ -1,13 +1,3 @@
-<div class="control-group <?php echo !empty($universityValidator->getNameError()) ? 'error' : ''; ?>">
-    <label class="control-label">Name</label>
-    <div class="controls">
-        <input name="name" type="text" placeholder="Name"
-               value="<?php echo !empty($university->getName()) ? $university->getName() : ''; ?>">
-        <?php if (!empty($universityValidator->getNameError())): ?>
-            <span class="help-inline"><?php echo $universityValidator->getNameError(); ?></span>
-        <?php endif; ?>
-    </div>
-</div>
 <div class="control-group <?php echo !empty($universityValidator->getLinkError()) ? 'error' : ''; ?>">
     <label class="control-label">Link</label>
     <div class="controls">
@@ -39,5 +29,8 @@
     </div>
 </div>
 
+<input hidden name="name" value="<?php echo !empty($university->getName()) ? $university->getName() : ''; ?>">
 <input hidden name="password"
        value="<?php echo !empty($university->getPassword()) ? $university->getPassword() : ''; ?>">
+<input hidden name="pricePackage"
+       value="<?php echo !empty($university->getFkPricePackage()) ? $university->getFkPricePackage() : ''; ?>">

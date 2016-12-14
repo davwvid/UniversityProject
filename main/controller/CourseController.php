@@ -5,6 +5,25 @@ include '../validator/CourseValidator.php';
 
 class CourseController
 {
+
+    public function show()
+    {
+
+        $courses = DAOFactory::getCourseDAO()->findAll();
+        require_once('../view/showCourse.php');
+    }
+
+    public function showMine()
+    {
+        if (isset($_SESSION['loggedIn']) && isset($_SESSION['id'])) {
+
+            $courses = DAOFactory::getCourseDAO()->findAllByUniversity($_SESSION['id']);
+            require_once('../view/manageMyCourse.php');
+        } else {
+            require_once('../view/home.php');
+        }
+    }
+
     public function create()
     {
         $course = new Course();
@@ -21,25 +40,6 @@ class CourseController
             }
         }
         require_once('../view/createCourse.php');
-    }
-
-    public function show()
-    {
-
-        $courses = DAOFactory::getCourseDAO()->findAll();
-        require_once('../view/showCourse.php');
-    }
-
-    public function showMine()
-    {
-        if (isset($_SESSION['loggedIn']) && isset($_SESSION['id'])) {
-
-            $courses = DAOFactory::getCourseDAO()->findAllByUniversity($_SESSION['id']);
-            require_once('../view/showMyCourse.php');
-        } else {
-
-            require_once('../view/home.php');
-        }
     }
 
     public function read()

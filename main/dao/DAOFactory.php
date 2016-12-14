@@ -43,7 +43,7 @@ abstract class DAOFactory
     }
 
     /**
-     * @return UniversityDAOInterface
+     * @return AdvertisingDAOInterface
      */
     public static function getAdvertisingDAO()
     {
@@ -51,7 +51,7 @@ abstract class DAOFactory
     }
 
     /**
-     * @return UniversityDAOInterface
+     * @return InvoiceDAOInterface
      */
     public static function getInvoiceDAO()
     {
@@ -59,7 +59,7 @@ abstract class DAOFactory
     }
 
     /**
-     * @return UniversityDAOInterface
+     * @return PricePackageDAOInterface
      */
     public static function getPricePackageDAO()
     {

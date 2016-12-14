@@ -2,6 +2,7 @@
 
 include '../dao/DAOFactory.php';
 include '../validator/UniversityValidator.php';
+include '../controller/CommonController.php';
 
 class UniversityController
 {
@@ -10,6 +11,39 @@ class UniversityController
 
         $universities = DAOFactory::getUniversityDAO()->findAll();
         require_once('../view/showUniversity.php');
+    }
+
+    public function showAll()
+    {
+        if (isset($_SESSION['loggedIn']) && isset($_SESSION['admin'])) {
+
+            $universities = DAOFactory::getUniversityDAO()->findAll();
+
+            require_once('../view/manageAllUniversity.php');
+        } else {
+            require_once('../view/home.php');
+        }
+    }
+
+    public function create()
+    {
+        $university = new University();
+        $universityValidator = new UniversityValidator();
+
+        if (!empty($_POST)) {
+
+            $newPassword = CommonController::generateRandomString();
+            $hashed_password = password_hash($newPassword, PASSWORD_DEFAULT);
+
+            $university = new University(null, $_POST['name'], $_POST['link'], $_POST['description'], $_POST['email'], $hashed_password, 0);
+            $universityValidator = new UniversityValidator($university);
+
+            if ($universityValidator->isValid()) {
+                DAOFactory::getUniversityDAO()->createUniversity($university);
+                return Route::call('University', 'showAll');
+            }
+        }
+        require_once('../view/createUniversity.php');
     }
 
     public function read()
@@ -26,7 +60,54 @@ class UniversityController
         require_once('../view/readUniversity.php');
     }
 
+    public function deleteAsk()
+    {
+        if (!empty($_GET['id'])) {
+            $id = $_REQUEST['id'];
+        } else {
+            $id = $_GET['id'];
+        }
+
+        $university = DAOFactory::getUniversityDAO()->readUniversity($id);
+        require_once('../view/deleteUniversity.php');
+    }
+
+    public function delete()
+    {
+        if (!empty($_POST)) {
+
+            DAOFactory::getUniversityDAO()->deleteUniversity(new University($_POST['id']));
+        }
+
+        return Route::call('University', 'showAll');
+    }
+
     public function update()
+    {
+        $university = new University();
+        $universityValidator = new UniversityValidator();
+
+        $id = null;
+        if (!empty($_GET['id'])) {
+            $id = $_REQUEST['id'];
+        }
+
+        if (!empty($_POST)) {
+            $university = new University($id, $_POST['name'], $_POST['link'], $_POST['description'], $_POST['email'], $_POST['password'], 0);
+            $universityValidator = new UniversityValidator($university);
+
+            if ($universityValidator->isValid()) {
+                $university = DAOFactory::getUniversityDAO()->updateUniversity($university);
+                return Route::call('University', 'showAll');
+            }
+        } else {
+            $university = DAOFactory::getUniversityDAO()->readUniversity($id);
+        }
+
+        require_once('../view/updateUniversity.php');
+    }
+
+    public function updateMine()
     {
         $university = new University();
         $universityValidator = new UniversityValidator();
@@ -34,16 +115,17 @@ class UniversityController
         $id = $_SESSION['id'];
 
         if (!empty($_POST)) {
-            $university = new University($id, $_POST['link'], $_POST['description'], $_POST['email']);
+            $university = new University($id, $_POST['name'], $_POST['link'], $_POST['description'], $_POST['email'], $_POST['password'], intval($_POST['pricePackage']));
             $universityValidator = new UniversityValidator($university);
 
             if ($universityValidator->isValid()) {
                 $university = DAOFactory::getUniversityDAO()->updateUniversity($university);
-                return Route::call('Home', 'show');
+                return Route::call('University', 'show');
             }
         } else {
             $university = DAOFactory::getUniversityDAO()->readUniversity($id);
         }
-        require_once('../view/updateUniversity.php');
+
+        require_once('../view/manageMyUniversity.php');
     }
 }

@@ -8,6 +8,7 @@ class UniversityValidator
     private $university;
 
     private $valid = true;
+    private $nameError = null;
     private $linkError = null;
     private $descriptionError = null;
     private $emailError = null;
@@ -22,8 +23,14 @@ class UniversityValidator
     {
 
         if (!is_null($this->university)) {
+
+            if (empty($this->university->getName())) {
+                $this->nameError = 'Please enter a Name';
+                $this->valid = false;
+            }
+
             if (empty($this->university->getLink())) {
-                $this->linkError = 'Please enter a link';
+                $this->linkError = 'Please enter a Link';
                 $this->valid = false;
             }
 
@@ -33,7 +40,7 @@ class UniversityValidator
             }
 
             if (empty($this->university->getEmail())) {
-                $this->emailError = 'Please enter an email';
+                $this->emailError = 'Please enter an Email';
                 $this->valid = false;
             }
         } else {
@@ -42,41 +49,32 @@ class UniversityValidator
         return $this->valid;
     }
 
-    /**
-     * @return University
-     */
     public function getUniversity()
     {
         return $this->university;
     }
 
-    /**
-     * @return boolean
-     */
     public function isValid()
     {
         return $this->valid;
     }
 
-    /**
-     * @return null
-     */
+    public function getNameError()
+    {
+
+        return $this->nameError;
+    }
+
     public function getLinkError()
     {
         return $this->linkError;
     }
 
-    /**
-     * @return null
-     */
     public function getDescriptionError()
     {
         return $this->descriptionError;
     }
 
-    /**
-     * @return null
-     */
     public function getEmailError()
     {
         return $this->emailError;

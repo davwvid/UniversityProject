@@ -8,9 +8,8 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>ShortDescription</th>
                 <th>Expiration Date</th>
-                <th>University</th>
+                <th>ShortDescription</th>
             </tr>
             </thead>
             <tbody>
@@ -18,9 +17,8 @@
             foreach ($courses as $course) {
                 echo '<tr>';
                 echo '<td><a href="?controller=Course&action=read&id=' . $course->getId() . '">' . $course->getName() . '</a></td>';
-                echo '<td>' . $course->getShortDescription() . '</td>';
                 echo '<td>' . $course->getExpirationDate() . '</td>';
-                echo '<td>' . $course->getFkUniversity() . '</td>';
+                echo '<td>' . $course->getShortDescription() . '</td>';
                 echo '</tr>';
             }
             ?>
