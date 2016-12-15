@@ -22,7 +22,7 @@ class InvoiceDAOImpl extends AbstractDAO implements InvoiceDAOInterface
         }
         $stmt = $this->pdoInstance->prepare('
             INSERT INTO invoice (price, date, comment, payed, fkUniversity)
-            VALUES (:price, :date , :comment, :fkUniversity)');
+            VALUES (:price, :date , :comment, :payed, :fkUniversity)');
         $stmt->bindValue(':price', $invoice->getPrice());
         $stmt->bindValue(':date', $invoice->getDate());
         $stmt->bindValue(':comment', $invoice->getComment());

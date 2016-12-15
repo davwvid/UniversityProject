@@ -30,12 +30,3 @@ CREATE TABLE `pricePackage` (
   `priceSub` DOUBLE NOT NULL,
   `priceCourse` DOUBLE NOT NULL
 )ENGINE = INNODB;
-
-CREATE TABLE `advertising` (
-  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `name` VARCHAR(100) NOT NULL,
-  `date` DATE NOT NULL,
-  `price` DOUBLE NOT NULL,
-  `fkUniversity` INT NOT NULL
-)ENGINE = INNODB;
-;

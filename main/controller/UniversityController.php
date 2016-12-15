@@ -1,6 +1,6 @@
 <?php
 
-include '../dao/DAOFactory.php';
+require_once '../dao/DAOFactory.php';
 include '../validator/UniversityValidator.php';
 include '../controller/CommonController.php';
 include '../controller/InvoiceController.php';

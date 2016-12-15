@@ -4,11 +4,11 @@
     </div>
     <div class="row">
 
-        <?php if ($_SESSION['admin']) { ?>
-            <p>
-                <a href="?controller=Invouce&action=createSub" class="btn btn-success">Create Subscription Fee</a>
-            </p>
-        <?php } ?>
+        <?php if ($_SESSION['admin']) {
+            echo '<p>';
+            echo '<a href="?controller=Invoice&action=createSub&id=' . $id . '" class="btn btn-success">Create Subscription Fee</a>';
+            echo '</p>';
+        } ?>
 
         <table class="table table-striped table-bordered">
             <thead>
@@ -35,12 +35,12 @@
                     echo '<td>Payed</td>';
                 }
                 if ($_SESSION['admin'] && $invoice->getPayed() == 0) {
-                    echo '<td><a class="btn btn-danger" href="?controller=Invoice&action=pay&id=' . $invoice->getId() . '">Pay</a></td>';
+                    echo '<td><a class="btn btn-danger" href="?controller=Invoice&action=pay&id=' . $invoice->getId() . '">Pay</a>';
                     echo '&nbsp;';
-                    echo '<a class="btn btn-danger" href="?controller=Invoice&action=deleteAsk&id=' . $invoice->getId() . '">Delete</a>';
+                    echo '<a class="btn btn-danger" href="?controller=Invoice&action=deleteAsk&id=' . $invoice->getId() . '">Delete</a></td>';
                 }
-                if ($_SESSION['admin']) {
-                    echo '<td></td>';
+                if ($_SESSION['admin'] && $invoice->getPayed() == 1) {
+                    echo '<td><a class="btn btn-danger" href="?controller=Invoice&action=deleteAsk&id=' . $invoice->getId() . '">Delete</a></td>';
                 }
                 echo '</tr>';
             }

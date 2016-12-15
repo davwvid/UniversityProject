@@ -3,6 +3,6 @@
         <h3>Home</h3>
     </div>
     <div class="row">
-        <span>Welcome, ...</span>
+        <span>Welcome on our Website, find the perfect course!</span>
     </div>
 </div>
