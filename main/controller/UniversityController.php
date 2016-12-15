@@ -95,7 +95,7 @@ class UniversityController
         }
 
         if (!empty($_POST)) {
-            $university = new University($id, $_POST['name'], $_POST['link'], $_POST['description'], $_POST['email'], $_POST['password'], 0);
+            $university = new University($id, $_POST['name'], $_POST['link'], $_POST['description'], $_POST['email'], $_POST['password'], $_POST['pricePackage']);
             $universityValidator = new UniversityValidator($university);
 
             if ($universityValidator->isValid()) {

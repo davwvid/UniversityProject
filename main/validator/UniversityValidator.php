@@ -12,6 +12,7 @@ class UniversityValidator
     private $linkError = null;
     private $descriptionError = null;
     private $emailError = null;
+    private $fkPricePackageError = null;
 
     public function __construct(University $university = null)
     {
@@ -43,6 +44,18 @@ class UniversityValidator
                 $this->emailError = 'Please enter an Email';
                 $this->valid = false;
             }
+
+            if (empty($this->university->getFkPricePackage())) {
+                $this->fkPricePackageError = 'Please enter a PricePackage';
+                $this->valid = false;
+            }
+
+            $pricePackage = $this->university->getFkPricePackage();
+            if (!empty($pricePackage) && ($pricePackage > 2 || $pricePackage < 0)) {
+                $this->fkPricePackageError = 'Please enter a PricePackage 0, 1 or 2';
+                $this->valid = false;
+            }
+
         } else {
             $this->valid = false;
         }
@@ -78,5 +91,11 @@ class UniversityValidator
     public function getEmailError()
     {
         return $this->emailError;
+    }
+
+    public function getFkPricePackageError()
+    {
+
+        return $this->fkPricePackageError;
     }
 }

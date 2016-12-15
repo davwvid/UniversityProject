@@ -4,6 +4,12 @@
     </div>
     <div class="row">
 
+        <?php if ($_SESSION['admin']) { ?>
+            <p>
+                <a href="?controller=Invouce&action=createSub" class="btn btn-success">Create Subscription Fee</a>
+            </p>
+        <?php } ?>
+
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
@@ -30,6 +36,8 @@
                 }
                 if ($_SESSION['admin'] && $invoice->getPayed() == 0) {
                     echo '<td><a class="btn btn-danger" href="?controller=Invoice&action=pay&id=' . $invoice->getId() . '">Pay</a></td>';
+                    echo '&nbsp;';
+                    echo '<a class="btn btn-danger" href="?controller=Invoice&action=deleteAsk&id=' . $invoice->getId() . '">Delete</a>';
                 }
                 if ($_SESSION['admin']) {
                     echo '<td></td>';

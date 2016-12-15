@@ -38,6 +38,16 @@
         <?php endif; ?>
     </div>
 </div>
+<div class="control-group <?php echo !empty($universityValidator->getFkPricePackageError()) ? 'error' : ''; ?>">
+    <label class="control-label">Price Package</label>
+    <div class="controls">
+        <input name="pricePackage" type="number" placeholder="0, 1 or 2"
+               value="<?php echo !empty($university->getFkPricePackage()) ? $university->getFkPricePackage() : ''; ?>">
+        <?php if (!empty($universityValidator->getFkPricePackageError())): ?>
+            <span class="help-inline"><?php echo $universityValidator->getFkPricePackageError(); ?></span>
+        <?php endif; ?>
+    </div>
+</div>
 
 <input hidden name="password"
        value="<?php echo !empty($university->getPassword()) ? $university->getPassword() : ''; ?>">
