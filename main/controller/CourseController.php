@@ -7,6 +7,9 @@ include '../controller/InvoiceController.php';
 class CourseController
 {
 
+    /**
+     * This method shows the list of all courses
+     */
     public function show()
     {
 
@@ -14,6 +17,9 @@ class CourseController
         require_once('../view/showCourse.php');
     }
 
+    /**
+     * This method shows the list of all courses belonging to one university
+     */
     public function showMine()
     {
         if (isset($_SESSION['loggedIn']) && isset($_SESSION['id'])) {
@@ -25,6 +31,9 @@ class CourseController
         }
     }
 
+    /**
+     * This method creates a new course as well as a invoice and sends it to the costumer
+     */
     public function create()
     {
         $course = new Course();
@@ -45,6 +54,9 @@ class CourseController
         require_once('../view/createCourse.php');
     }
 
+    /**
+     * This method shows one specific course
+     */
     public function read()
     {
 
@@ -59,6 +71,9 @@ class CourseController
         require_once('../view/readCourse.php');
     }
 
+    /**
+     * This method shows a message if the course should really be deleted
+     */
     public function deleteAsk()
     {
         if (!empty($_GET['id'])) {
@@ -71,6 +86,9 @@ class CourseController
         require_once('../view/deleteCourse.php');
     }
 
+    /**
+     * This method deletes the selected course
+     */
     public function delete()
     {
         if (!empty($_POST)) {
@@ -81,6 +99,9 @@ class CourseController
         return Route::call('Course', 'showMine');
     }
 
+    /**
+     * This method updates a course
+     */
     public function update()
     {
         $course = new Course();

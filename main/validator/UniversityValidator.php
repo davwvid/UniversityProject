@@ -14,12 +14,19 @@ class UniversityValidator
     private $emailError = null;
     private $fkPricePackageError = null;
 
+    /**
+     * UniversityValidator constructor.
+     * @param University $university
+     */
     public function __construct(University $university = null)
     {
         $this->university = $university;
         $this->validate();
     }
 
+    /**
+     * Validation
+     */
     public function validate()
     {
 
@@ -43,6 +50,11 @@ class UniversityValidator
             if (empty($this->university->getEmail())) {
                 $this->emailError = 'Please enter an Email';
                 $this->valid = false;
+            } else {
+                if (!filter_var($this->university->getEmail(), FILTER_VALIDATE_EMAIL)) {
+                    $this->emailError = 'Please enter a valid Email';
+                    $this->valid = false;
+                }
             }
 
             if (empty($this->university->getFkPricePackage())) {
@@ -62,37 +74,58 @@ class UniversityValidator
         return $this->valid;
     }
 
+    /**
+     * @return University
+     */
     public function getUniversity()
     {
         return $this->university;
     }
 
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return $this->valid;
     }
 
+    /**
+     * @return $nameError
+     */
     public function getNameError()
     {
 
         return $this->nameError;
     }
 
+    /**
+     * @return $linkError
+     */
     public function getLinkError()
     {
         return $this->linkError;
     }
 
+    /**
+     * @return $descriptionError
+     */
     public function getDescriptionError()
     {
         return $this->descriptionError;
     }
 
+    /**
+     * @return $emailError
+     */
     public function getEmailError()
     {
         return $this->emailError;
     }
 
+    /**
+     * @return $fkPricePackageError
+     */
     public function getFkPricePackageError()
     {
 

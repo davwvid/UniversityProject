@@ -35,7 +35,7 @@ class Course
     }
 
     /**
-     * @return null
+     * @return $id
      */
     public function getId()
     {
@@ -43,7 +43,7 @@ class Course
     }
 
     /**
-     * @param null $id
+     * @param $id
      */
     public function setId($id)
     {
@@ -51,7 +51,7 @@ class Course
     }
 
     /**
-     * @return null
+     * @return $name
      */
     public function getName()
     {
@@ -59,7 +59,7 @@ class Course
     }
 
     /**
-     * @param null $name
+     * @param $name
      */
     public function setName($name)
     {
@@ -67,7 +67,7 @@ class Course
     }
 
     /**
-     * @return null
+     * @return $shortDescription
      */
     public function getShortDescription()
     {
@@ -75,7 +75,7 @@ class Course
     }
 
     /**
-     * @param null $shortDescription
+     * @param $shortDescription
      */
     public function setShortDescription($shortDescription)
     {
@@ -83,7 +83,7 @@ class Course
     }
 
     /**
-     * @return null
+     * @return $description
      */
     public function getDescription()
     {
@@ -91,7 +91,7 @@ class Course
     }
 
     /**
-     * @param null $description
+     * @param $description
      */
     public function setDescription($description)
     {
@@ -99,7 +99,7 @@ class Course
     }
 
     /**
-     * @return null
+     * @return $expirationDate
      */
     public function getExpirationDate()
     {
@@ -107,7 +107,7 @@ class Course
     }
 
     /**
-     * @param null $expirationDate
+     * @param $expirationDate
      */
     public function setExpirationDate($expirationDate)
     {
@@ -115,7 +115,7 @@ class Course
     }
 
     /**
-     * @return null
+     * @return $fkUniversity
      */
     public function getFkUniversity()
     {
@@ -123,11 +123,10 @@ class Course
     }
 
     /**
-     * @param null $fkUniversity
+     * @param $fkUniversity
      */
     public function setFkUniversity($fkUniversity)
     {
         $this->fkUniversity = $fkUniversity;
     }
-
 }

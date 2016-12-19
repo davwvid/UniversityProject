@@ -36,7 +36,7 @@ class Invoice
     }
 
     /**
-     * @return null
+     * @return $id
      */
     public function getId()
     {
@@ -44,7 +44,7 @@ class Invoice
     }
 
     /**
-     * @param null $id
+     * @param $id
      */
     public function setId($id)
     {
@@ -52,7 +52,7 @@ class Invoice
     }
 
     /**
-     * @return null
+     * @return $price
      */
     public function getPrice()
     {
@@ -60,7 +60,7 @@ class Invoice
     }
 
     /**
-     * @param null $price
+     * @param $price
      */
     public function setPrice($price)
     {
@@ -68,7 +68,7 @@ class Invoice
     }
 
     /**
-     * @return null
+     * @return $comment
      */
     public function getComment()
     {
@@ -76,7 +76,7 @@ class Invoice
     }
 
     /**
-     * @param null $comment
+     * @param $comment
      */
     public function setComment($comment)
     {
@@ -84,7 +84,7 @@ class Invoice
     }
 
     /**
-     * @return null
+     * @return $date
      */
     public function getDate()
     {
@@ -92,7 +92,7 @@ class Invoice
     }
 
     /**
-     * @param null $date
+     * @param $date
      */
     public function setDate($date)
     {
@@ -100,7 +100,7 @@ class Invoice
     }
 
     /**
-     * @return null
+     * @return $payed
      */
     public function getPayed()
     {
@@ -108,7 +108,7 @@ class Invoice
     }
 
     /**
-     * @param null $payed
+     * @param $payed
      */
     public function setPayed($payed)
     {
@@ -116,7 +116,7 @@ class Invoice
     }
 
     /**
-     * @return null
+     * @return $fkUniversity
      */
     public function getFkUniversity()
     {
@@ -124,11 +124,10 @@ class Invoice
     }
 
     /**
-     * @param null $fkUniversity
+     * @param $fkUniversity
      */
     public function setFkUniversity($fkUniversity)
     {
         $this->fkUniversity = $fkUniversity;
     }
-
 }

@@ -6,16 +6,25 @@ include '../controller/CommonController.php';
 class LoginController
 {
 
+    /**
+     * This method shows the login
+     */
     public function showLogin()
     {
         require_once('../view/login.php');
     }
 
+    /**
+     * This method shows the reset
+     */
     public function showReset()
     {
         require_once('../view/reset.php');
     }
 
+    /**
+     * This method handles the whole login process and sets the session variables
+     */
     public function login()
     {
 
@@ -51,6 +60,9 @@ class LoginController
         require_once('../view/login.php');
     }
 
+    /**
+     * This method handles the logout
+     */
     public function logout()
     {
         if ($_SESSION['loggedIn'] == true) {
@@ -63,6 +75,9 @@ class LoginController
         require_once('../view/login.php');
     }
 
+    /**
+     * This method sends a new generated password to the university
+     */
     public function reset()
     {
         if (isset($_POST['email'])) {
@@ -92,6 +107,13 @@ class LoginController
         require_once('../view/reset.php');
     }
 
+    /**
+     * This method send a email to the university containing the new password
+     *
+     * @param $name
+     * @param $password
+     * @param $email
+     */
     public function sendMail($name, $password, $email)
     {
 

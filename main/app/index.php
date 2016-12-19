@@ -9,7 +9,6 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action = 'show';
 }
 
-// session
 session_start();
 
 require_once('layout.php');

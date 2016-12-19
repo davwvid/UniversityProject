@@ -23,7 +23,7 @@ class PricePackage
     }
 
     /**
-     * @return null
+     * @return $id
      */
     public function getId()
     {
@@ -31,7 +31,7 @@ class PricePackage
     }
 
     /**
-     * @param null $id
+     * @param $id
      */
     public function setId($id)
     {
@@ -39,7 +39,7 @@ class PricePackage
     }
 
     /**
-     * @return null
+     * @return $priceSub
      */
     public function getPriceSub()
     {
@@ -47,7 +47,7 @@ class PricePackage
     }
 
     /**
-     * @param null $priceSub
+     * @param $priceSub
      */
     public function setPriceSub($priceSub)
     {
@@ -55,7 +55,7 @@ class PricePackage
     }
 
     /**
-     * @return null
+     * @return $priceCourse
      */
     public function getPriceCourse()
     {
@@ -63,11 +63,10 @@ class PricePackage
     }
 
     /**
-     * @param null $priceCourse
+     * @param $priceCourse
      */
     public function setPriceCourse($priceCourse)
     {
         $this->priceCourse = $priceCourse;
     }
-
 }

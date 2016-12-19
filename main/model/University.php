@@ -39,7 +39,7 @@ class University
     }
 
     /**
-     * @return null
+     * @return $id
      */
     public function getId()
     {
@@ -47,7 +47,7 @@ class University
     }
 
     /**
-     * @param null $id
+     * @param $id
      */
     public function setId($id)
     {
@@ -55,7 +55,7 @@ class University
     }
 
     /**
-     * @return null
+     * @return $name
      */
     public function getName()
     {
@@ -63,7 +63,7 @@ class University
     }
 
     /**
-     * @param null $name
+     * @param $name
      */
     public function setName($name)
     {
@@ -71,7 +71,7 @@ class University
     }
 
     /**
-     * @return null
+     * @return $link
      */
     public function getLink()
     {
@@ -79,7 +79,7 @@ class University
     }
 
     /**
-     * @param null $link
+     * @param $link
      */
     public function setLink($link)
     {
@@ -87,7 +87,7 @@ class University
     }
 
     /**
-     * @return null
+     * @return $description
      */
     public function getDescription()
     {
@@ -95,7 +95,7 @@ class University
     }
 
     /**
-     * @param null $description
+     * @param $description
      */
     public function setDescription($description)
     {
@@ -103,7 +103,7 @@ class University
     }
 
     /**
-     * @return null
+     * @return $email
      */
     public function getEmail()
     {
@@ -111,7 +111,7 @@ class University
     }
 
     /**
-     * @param null $email
+     * @param $email
      */
     public function setEmail($email)
     {
@@ -119,7 +119,7 @@ class University
     }
 
     /**
-     * @return null
+     * @return $password
      */
     public function getPassword()
     {
@@ -127,7 +127,7 @@ class University
     }
 
     /**
-     * @param null $password
+     * @param $password
      */
     public function setPassword($password)
     {
@@ -135,7 +135,7 @@ class University
     }
 
     /**
-     * @return null
+     * @return $fkPricePackage
      */
     public function getFkPricePackage()
     {
@@ -143,11 +143,10 @@ class University
     }
 
     /**
-     * @param null $fkPricePackage
+     * @param $fkPricePackage
      */
     public function setFkPricePackage($fkPricePackage)
     {
         $this->fkPricePackage = $fkPricePackage;
     }
-
 }

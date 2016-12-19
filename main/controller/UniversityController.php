@@ -7,6 +7,9 @@ include '../controller/InvoiceController.php';
 
 class UniversityController
 {
+    /**
+     * This method shows the list of all universities
+     */
     public function show()
     {
 
@@ -14,6 +17,9 @@ class UniversityController
         require_once('../view/showUniversity.php');
     }
 
+    /**
+     * This method shows the list of all universities (admin view)
+     */
     public function showAll()
     {
         if (isset($_SESSION['loggedIn']) && isset($_SESSION['admin'])) {
@@ -26,6 +32,9 @@ class UniversityController
         }
     }
 
+    /**
+     * This method creates a new university as well as a invoice and sends it to the costumer
+     */
     public function create()
     {
         $university = new University();
@@ -36,7 +45,7 @@ class UniversityController
             $newPassword = CommonController::generateRandomString();
             $hashed_password = password_hash($newPassword, PASSWORD_DEFAULT);
 
-            $university = new University(null, $_POST['name'], $_POST['link'], $_POST['description'], $_POST['email'], $hashed_password, 0);
+            $university = new University(null, $_POST['name'], $_POST['link'], $_POST['description'], $_POST['email'], $hashed_password, $_POST['pricePackage']);
             $universityValidator = new UniversityValidator($university);
 
             if ($universityValidator->isValid()) {
@@ -48,6 +57,9 @@ class UniversityController
         require_once('../view/createUniversity.php');
     }
 
+    /**
+     * This method shows one specific university
+     */
     public function read()
     {
 
@@ -62,6 +74,9 @@ class UniversityController
         require_once('../view/readUniversity.php');
     }
 
+    /**
+     * This method shows a message if the university should really be deleted
+     */
     public function deleteAsk()
     {
         if (!empty($_GET['id'])) {
@@ -74,6 +89,9 @@ class UniversityController
         require_once('../view/deleteUniversity.php');
     }
 
+    /**
+     * This method deletes the selected university
+     */
     public function delete()
     {
         if (!empty($_POST)) {
@@ -84,6 +102,9 @@ class UniversityController
         return Route::call('University', 'showAll');
     }
 
+    /**
+     * This method updates a university (admin view)
+     */
     public function update()
     {
         $university = new University();
@@ -109,6 +130,9 @@ class UniversityController
         require_once('../view/updateUniversity.php');
     }
 
+    /**
+     * This method updates a university (user view)
+     */
     public function updateMine()
     {
         $university = new University();

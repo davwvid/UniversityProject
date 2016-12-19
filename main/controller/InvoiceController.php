@@ -1,10 +1,14 @@
 <?php
 
 require_once '../dao/DAOFactory.php';
+require_once '../controller/CommonController.php';
 
 class InvoiceController
 {
 
+    /**
+     * This method creates a new subscription fee for an university
+     */
     public function createSub()
     {
 
@@ -22,6 +26,12 @@ class InvoiceController
         '</script>';
     }
 
+    /**
+     * This method creates the invoice and sends a pdf to the university
+     *
+     * @param $type
+     * @param $university
+     */
     public static function create($type, $university)
     {
 
@@ -38,12 +48,15 @@ class InvoiceController
 
         $invoice = new Invoice(null, $price, $date, $comment, 0, $university->getId());
         DAOFactory::getInvoiceDAO()->createInvoice($invoice);
+
+        CommonController::generatePDFInvoice($comment, $price);
     }
 
+    /**
+     * This method shows a list of all invoices belonging to one university
+     */
     public function showMine()
     {
-
-
         if (isset($_SESSION['loggedIn']) && isset($_SESSION['id'])) {
 
             $invoices = DAOFactory::getInvoiceDAO()->findAllByUniversity($_SESSION['id']);
@@ -53,6 +66,10 @@ class InvoiceController
         }
     }
 
+    /**
+     * This method shows a list of all invoices belonging to one university
+     * (but for the view of the admin)
+     */
     public function read()
     {
 
@@ -66,6 +83,9 @@ class InvoiceController
         require_once('../view/showInvoice.php');
     }
 
+    /**
+     * This method changes to state of the invoice to payed
+     */
     public function pay()
     {
 
@@ -84,6 +104,9 @@ class InvoiceController
         '</script>';
     }
 
+    /**
+     * This method shows a message if the invoice should really be deleted
+     */
     public function deleteAsk()
     {
 
@@ -97,6 +120,9 @@ class InvoiceController
         require_once('../view/deleteInvoices.php');
     }
 
+    /**
+     * This method deletes the selected invoice
+     */
     public function delete()
     {
 

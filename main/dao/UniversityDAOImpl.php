@@ -3,12 +3,6 @@
 require_once "AbstractDAO.php";
 include "UniversityDAOInterface.php";
 
-/**
- * Created by PhpStorm.
- * User: andreas.martin
- * Date: 14.11.2016
- * Time: 11:36
- */
 class UniversityDAOImpl extends AbstractDAO implements UniversityDAOInterface
 {
     /**
