@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="nav navbar-nav">
             <li>
-                <a href="">info</a>
+                <a href="">© by A-Team</a>
             </li>
         </ul>
     </div>
