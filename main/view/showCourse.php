@@ -3,6 +3,17 @@
         <h3>Courses</h3>
     </div>
     <div class="row">
+        <form action="?controller=Course&action=show" method="post">
+            <div class="col-md-4" style="padding: 0;">
+                <input class="form-control" type="text" name="search"
+                       value="<?php echo $search != "" ? $search : ''; ?>">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="row" style="margin-top: 10px;">
 
         <table class="table table-striped table-bordered">
             <thead>
@@ -19,11 +30,13 @@
 
             foreach ($courses as $course) {
                 if ($today < $course->getExpirationDate()) {
-                    echo '<tr>';
-                    echo '<td><a href="?controller=Course&action=read&id=' . $course->getId() . '">' . $course->getName() . '</a></td>';
-                    echo '<td>' . $course->getExpirationDate() . '</td>';
-                    echo '<td>' . $course->getShortDescription() . '</td>';
-                    echo '</tr>';
+                    if ($search == "" || (strpos(strtolower($course->getName()), strtolower($search)) !== false)) {
+                        echo '<tr>';
+                        echo '<td><a href="?controller=Course&action=read&id=' . $course->getId() . '">' . $course->getName() . '</a></td>';
+                        echo '<td>' . $course->getExpirationDate() . '</td>';
+                        echo '<td>' . $course->getShortDescription() . '</td>';
+                        echo '</tr>';
+                    }
                 }
             }
             ?>

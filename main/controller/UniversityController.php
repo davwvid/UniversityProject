@@ -13,6 +13,12 @@ class UniversityController
     public function show()
     {
 
+        $search = '';
+
+        if ($_POST) {
+            $search = $_POST['search'];
+        }
+
         $universities = DAOFactory::getUniversityDAO()->findAll();
         require_once('../view/showUniversity.php');
     }

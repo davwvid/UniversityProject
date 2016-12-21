@@ -13,6 +13,12 @@ class CourseController
     public function show()
     {
 
+        $search = '';
+
+        if ($_POST) {
+            $search = $_POST['search'];
+        }
+
         $courses = DAOFactory::getCourseDAO()->findAll();
         require_once('../view/showCourse.php');
     }
