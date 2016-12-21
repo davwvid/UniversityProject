@@ -63,8 +63,8 @@ class UniversityValidator
             }
 
             $pricePackage = $this->university->getFkPricePackage();
-            if (!empty($pricePackage) && ($pricePackage > 2 || $pricePackage < 0)) {
-                $this->fkPricePackageError = 'Please enter a PricePackage 0, 1 or 2';
+            if (!empty($pricePackage) && ($pricePackage > 3 || $pricePackage < 1)) {
+                $this->fkPricePackageError = 'Please enter a PricePackage 1, 2 or 3';
                 $this->valid = false;
             }
 
