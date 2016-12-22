@@ -53,7 +53,7 @@ class CourseController
             if ($courseValidator->isValid()) {
                 $course = DAOFactory::getCourseDAO()->createCourse($course);
                 $university = DAOFactory::getUniversityDAO()->readUniversity($course->getFkUniversity());
-                InvoiceController::create("", $university);
+                InvoiceController::create("", $university, "");
                 return Route::call('Course', 'showMine');
             }
         }

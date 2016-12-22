@@ -56,7 +56,7 @@ class UniversityController
 
             if ($universityValidator->isValid()) {
                 $university = DAOFactory::getUniversityDAO()->createUniversity($university);
-                InvoiceController::create("sub", $university);
+                InvoiceController::create("sub", $university, $newPassword);
                 return Route::call('University', 'showAll');
             }
         }

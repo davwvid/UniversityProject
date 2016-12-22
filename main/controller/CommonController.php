@@ -29,7 +29,7 @@ class CommonController
      * @param $message
      * @param $costs
      */
-    public static function generatePDFInvoice($message, $costs)
+    public static function generatePDFInvoice($headerMessage, $message, $costs)
     {
 
         // library = http://fpdf.org/en
@@ -48,7 +48,7 @@ class CommonController
         // email stuff (change data below)
         $to = "everybodyUniversity@gmail.com";
         $from = "everybodyUniversity@gmail.com";
-        $subject = "New Invoice for " . $message;
+        $subject = "New Invoice for " . $headerMessage;
 
         // a random hash will be necessary to send mixed content
         $separator = md5(time());

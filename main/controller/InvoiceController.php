@@ -19,7 +19,7 @@ class InvoiceController
         }
 
         $university = DAOFactory::getUniversityDAO()->readUniversity($id);
-        self::create("sub", $university);
+        self::create("subX", $university, "");
 
         echo '<script type="text/javascript">',
         'history.go(-1);',
@@ -32,7 +32,7 @@ class InvoiceController
      * @param $type
      * @param $university
      */
-    public static function create($type, $university)
+    public static function create($type, $university, $password)
     {
 
         $pricePackage = DAOFactory::getPricePackageDAO()->readPricePackage($university->getFkPricePackage());
@@ -41,15 +41,22 @@ class InvoiceController
         if ($type == "sub") {
             $price = $pricePackage->getPriceSub();
             $comment = "Subscription Fee";
+            $message = "Hello " . $university->getName() . "<br><br>Please pay the subscription fee within the next 30 days"
+                . "<br><br>Login with the following credentials: Email-> " . $university->getEmail() . ", PW-> " . $password;
+        } else if ($type == "subX") {
+            $price = $pricePackage->getPriceCourse();
+            $comment = "New Subscription Fee";
+            $message = "Hello " . $university->getName() . "<br><br>Please pay the subscription fee within the next 30 days.";
         } else {
             $price = $pricePackage->getPriceCourse();
             $comment = "New Course Fee";
+            $message = "Hello " . $university->getName() . "<br><br>Please pay the course fee within the next 30 days.";
         }
 
         $invoice = new Invoice(null, $price, $date, $comment, 0, $university->getId());
         DAOFactory::getInvoiceDAO()->createInvoice($invoice);
 
-        CommonController::generatePDFInvoice($comment, $price);
+        CommonController::generatePDFInvoice($comment, $message, $price);
     }
 
     /**

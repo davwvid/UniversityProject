@@ -93,7 +93,7 @@ CREATE TABLE `pricepackage` (
 
 LOCK TABLES `pricepackage` WRITE;
 /*!40000 ALTER TABLE `pricepackage` DISABLE KEYS */;
-INSERT INTO `pricepackage` VALUES (0,1000,30),(1,800,20),(2,700,15);
+INSERT INTO `pricepackage` VALUES (1,1000,30),(2,800,20),(3,700,15);
 /*!40000 ALTER TABLE `pricepackage` ENABLE KEYS */;
 UNLOCK TABLES;
 
