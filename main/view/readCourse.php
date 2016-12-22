@@ -25,8 +25,11 @@
         </div>
         <div id="main">
             <h5>
-                <b>Description</b></h5>
-            <?php echo $course->getDescription(); ?>
+                <b>Description</b>
+            </h5>
+            <div>
+                <?php echo $course->getDescription(); ?>
+            </div>
         </div>
     </div>
 </div>
