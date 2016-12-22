@@ -27,8 +27,8 @@ DROP TABLE IF EXISTS `course`;
 CREATE TABLE `course` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `shortDescription` varchar(100) NOT NULL,
-  `description` varchar(200) NOT NULL,
+  `shortDescription` varchar(1000) NOT NULL,
+  `description` varchar(5000) NOT NULL,
   `expirationDate` date NOT NULL,
   `fkUniversity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -56,7 +56,7 @@ CREATE TABLE `invoice` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `price` double NOT NULL,
   `date` date NOT NULL,
-  `comment` varchar(200) NOT NULL,
+  `comment` varchar(500) NOT NULL,
   `payed` int(11) NOT NULL,
   `fkUniversity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -108,7 +108,7 @@ CREATE TABLE `university` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL,
-  `description` varchar(200) NOT NULL,
+  `description` varchar(5000) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `fkPricePackage` int(11) NOT NULL,

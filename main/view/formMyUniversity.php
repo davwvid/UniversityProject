@@ -8,16 +8,6 @@
         <?php endif; ?>
     </div>
 </div>
-<div class="control-group <?php echo !empty($universityValidator->getDescriptionError()) ? 'error' : ''; ?>">
-    <label class="control-label">Description</label>
-    <div class="controls">
-        <input name="description" type="text" placeholder="Description"
-               value="<?php echo !empty($university->getDescription()) ? $university->getDescription() : ''; ?>">
-        <?php if (!empty($universityValidator->getDescriptionError())): ?>
-            <span class="help-inline"><?php echo $universityValidator->getDescriptionError(); ?></span>
-        <?php endif; ?>
-    </div>
-</div>
 <div class="control-group <?php echo !empty($universityValidator->getEmailError()) ? 'error' : ''; ?>">
     <label class="control-label">Email</label>
     <div class="controls">
@@ -25,6 +15,16 @@
                value="<?php echo !empty($university->getEmail()) ? $university->getEmail() : ''; ?>">
         <?php if (!empty($universityValidator->getEmailError())): ?>
             <span class="help-inline"><?php echo $universityValidator->getEmailError(); ?></span>
+        <?php endif; ?>
+    </div>
+</div>
+<div class="control-group <?php echo !empty($universityValidator->getDescriptionError()) ? 'error' : ''; ?>">
+    <label class="control-label">Description</label>
+    <div class="controls">
+        <textarea rows="5" cols="50" name="description"
+                  placeholder="Description"><?php echo !empty($university->getDescription()) ? $university->getDescription() : ''; ?></textarea>
+        <?php if (!empty($universityValidator->getDescriptionError())): ?>
+            <span class="help-inline"><?php echo $universityValidator->getDescriptionError(); ?></span>
         <?php endif; ?>
     </div>
 </div>

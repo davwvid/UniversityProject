@@ -14,7 +14,6 @@
                 <th>Name</th>
                 <th>ShortDescription</th>
                 <th>Expiration Date</th>
-                <th>University</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -25,7 +24,6 @@
                 echo '<td><a href="?controller=Course&action=read&id=' . $course->getId() . '">' . $course->getName() . '</a></td>';
                 echo '<td>' . $course->getShortDescription() . '</td>';
                 echo '<td>' . $course->getExpirationDate() . '</td>';
-                echo '<td>' . $course->getFkUniversity() . '</td>';
                 echo '<td width=250>';
                 echo '<a class="btn" href="?controller=Course&action=read&id=' . $course->getId() . '">Read</a>';
                 echo '&nbsp;';

@@ -25,12 +25,6 @@
         </div>
         <div id="main">
             <h5>
-                <b>ID:</b>
-                <?php echo $course->getId(); ?>
-                </br>
-                <hr>
-            </h5>
-            <h5>
                 <b>Description</b></h5>
             <?php echo $course->getDescription(); ?>
         </div>

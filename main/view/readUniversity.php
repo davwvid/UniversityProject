@@ -26,15 +26,11 @@
         </div>
         <div id="main">
             <h5>
-                <b>ID:</b>
-                <?php echo $university->getId(); ?>
-                </br>
-                <hr>
-            </h5>
-            <h5>
                 <b>Description:</b>
             </h5>
-            <?php echo $university->getDescription(); ?>
+            <div>
+                <?php echo $university->getDescription(); ?>
+            </div>
         </div>
     </div>
 </div>

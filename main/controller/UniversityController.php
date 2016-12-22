@@ -15,8 +15,10 @@ class UniversityController
 
         $search = '';
 
-        if ($_POST) {
-            $search = $_POST['search'];
+        if (!empty($_POST)) {
+            if (!empty($_POST['search'])) {
+                $search = $_POST['search'];
+            }
         }
 
         $universities = DAOFactory::getUniversityDAO()->findAll();
