@@ -1,8 +1,8 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="../../img/logo.png" height="20px">
+            <a class="navbar-brand" href="#" style="padding: 0;">
+                <img alt="Brand" src="../../img/logo.jpeg" height="52px">
             </a>
         </div>
         <ul class="nav navbar-nav">
