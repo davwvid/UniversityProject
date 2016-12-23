@@ -15,11 +15,11 @@
             <ul>
                 <h5>
                     <b>Email:</b>
-                    <?php echo $university->getEmail(); ?>
+                    <?php echo '<a href="mailto:' . $university->getEmail() . '">' . $university->getEmail() . '</a>' ?>
                 </h5>
                 <h5>
                     <b>Link:</b>
-                    <?php echo $university->getLink(); ?>
+                    <?php echo '<a href="http://' . $university->getLink() . '">' . $university->getLink() . '</a>' ?>
                     </br>
                 </h5>
             </ul>

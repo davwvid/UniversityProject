@@ -19,7 +19,7 @@
                 </h5>
                 <h5>
                     <b>Email:</b>
-                    <?php echo $university->getEmail(); ?>
+                    <?php echo '<a href="mailto:' . $university->getEmail() . '">' . $university->getEmail() . '</a>' ?>
                 </h5>
             </ul>
         </div>
